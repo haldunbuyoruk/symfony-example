@@ -26,26 +26,6 @@ npm install
 
 ```command
 
-touch .bowerrc
-```
-
-```command
-
-vi .bowerrc
-```
-
-Paste the follwing to the .bowerrc
-
-```
-{
-  "directory": "assets"
-}
-
-```
-
-
-```command
-
 bower install
 ```
 
