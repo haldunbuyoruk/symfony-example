@@ -9,7 +9,7 @@ change this line:
 ## Run following comments
 
 ```command
-composer update
+composer install
 ```
 
 ```command
@@ -23,6 +23,26 @@ php bin/console doctrine:schema:update --force
 ```command
 npm install
 ```
+
+```command
+
+touch .bowerrc
+```
+
+```command
+
+vi .bowerrc
+```
+
+Paste the follwing to the .bowerrc
+
+```
+{
+  "directory": "assets"
+}
+
+```
+
 
 ```command
 
