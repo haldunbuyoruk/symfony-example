@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/components-font-awesome/css/fontawesome-all.min.css') }}">
+    <script type="text/javascript" src="{{ asset('assets/jquery/dist/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/custom.min.js') }}"></script>
+    <title>{% block title %} Coin Bundle{% endblock %}</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <a class="navbar-brand" href="/">Coin Bundle</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                
+                   {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                   <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('fos_user_security_logout') }}">
+                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('fos_user_resetting_reset', {'token': token|default('{{token}}')}) }}">Reset Password</a>
+                    </li>
+                    {% if coin is defined %}
+                         <li class="nav-item active">
+                            <span id="coin" class="nav-link text-white">{{ coin }} </span>
+                        </li>
+                    {% endif %}
+                    {% else %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('fos_user_security_login') }}">Sign In</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{path("fos_user_registration_register")}}">Sign Up</a>
+                    </li>
+                   
+                    {% endif %}
+
+            </ul>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+               <span class="mt-2 mt-md-0 text-white">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</span>
+            {% endif %}
+        </div>
+    </nav>
+
+
+<main role="main" class="container">
+    <div class="jumbotron">
+    {% block content %}{% endblock %}
+
+    </div>
+</main>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+{% block javascripts %}{% endblock %}
+<script type="text/javascript">
+    {% for js in app.session.flashbag.get('javascript') %}
+    {% autoescape false %}{{ js }}{% endautoescape %}
+    {% endfor %}
+</script>
+</body>
+</html>

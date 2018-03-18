@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% block content %}
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+	<form class="form-inline">
+		<div class="form-group mb-2">
+	  		<button id="buy" class="btn btn-primary">Buy</button>
+	  	</div>
+	  	<div class="form-group mx-sm-3 mb-2">
+	  		<label class="sr-only" for="verify-code">Verify Code</label>
+	    	<input type="text" class="form-control"  id="verify-code" placeholder="Verify Code">
+	  	</div>
+	  	<button id="verify" class="btn btn-primary mb-2">Verify Code</button>
+	</form>
+	<div class="result">
+	</div>
+{% else %}
+	<style>
+	    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+	</style>
+	    <h1>Hello {{ controller_name }}! ✅</h1>
+
+	    This friendly message is coming from:
+	    <ul>
+	        <li>Your controller at <code>src/Controller/DefaultController.php</code></li>
+	        <li>Your template at <code>templates/default/index.html.twig</code></li>
+	    </ul>
+{% endif %}
+{% endblock %}

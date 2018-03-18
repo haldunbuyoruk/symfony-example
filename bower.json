@@ -1,0 +1,29 @@
+{
+  "name": "symfony-gaming",
+  "description": "SymfonyGame Example",
+  "main": "index",
+  "authors": [
+    "Haldun Buyorük"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "symfony4",
+    "coinbunle",
+    "fos_user"
+  ],
+  "homepage": "127.0.0.1",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+   "bootstrap": "^4.0.0",
+   "components-font-awesome": "^5.0.6",
+   "jquery": "^3.3.1"
+ }
+}

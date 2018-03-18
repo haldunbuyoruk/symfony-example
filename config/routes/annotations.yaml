@@ -1,0 +1,7 @@
+controllers:
+    resource: ../../src/Controller/
+    type: annotation
+coin:
+    prefix: /coin
+    resource: ../../src/PlatinGame/CoinBundle/Controller/
+    type: annotation
