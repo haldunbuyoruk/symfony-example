@@ -6,7 +6,7 @@ change this line:
 
 ``` DATABASE_URL=mysql://root:password@localhost:3306/symfony_example```
 
-## Run following comments
+## Run following commands
 
 ```command
 composer install
